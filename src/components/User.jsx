@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 
 let User = ({data}) => {
     let [todos,setTodos] = useState([]);
-
+    
     useEffect(() => {
         let getTodos = async () => {
             let response = await fetch("https://jsonplaceholder.typicode.com/todos?userId=" + data.id)
@@ -12,15 +12,13 @@ let User = ({data}) => {
         getTodos();
     },[])
 
-
-
-    return(<div>
+    return(
+    <div>
         <h2>Name :{data.name}</h2>
         <h3>Todos</h3>
         <ul>
-            {todos.map(todo => <li>{todo}</li> )}
+            {todos.map(todo => <li key={todo.id}>{todo.title}</li> )}
         </ul>
-
     </div>)
 }
 
