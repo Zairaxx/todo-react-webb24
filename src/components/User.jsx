@@ -2,7 +2,8 @@ import { useEffect, useState } from "react"
 
 let User = ({data}) => {
     let [todos,setTodos] = useState([]);
-    
+
+    //Vi hämtar todos för den valda användaren när denna komponent mountas
     useEffect(() => {
         let getTodos = async () => {
             let response = await fetch("https://jsonplaceholder.typicode.com/todos?userId=" + data.id)
